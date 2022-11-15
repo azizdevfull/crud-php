@@ -1,7 +1,7 @@
 <?php
     include "config.php";
 
-    $sql = "SELECT * FROM  'posts'";
+    $sql = "SELECT * FROM  posts";
 
     $result = $conn->query($sql);
 

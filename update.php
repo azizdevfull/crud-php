@@ -4,9 +4,10 @@
     if (isset($_POST['update'])) {
         $title = $_POST['title'];
         $body = $_POST['body'];
+        $post_id = $_GET['id'];
 
-        $sql = "UPDATE 'posts' SET title='$title', body='$body'";
-
+        $sql = "update posts set title = '$title', body = '$body' where id = '$post_id'";
+        // $sql = "UPDATE `posts` SET `title`='$title',`body`='$body' WHERE 'id' = '$post_id'";
         $result = $conn->query($sql);
 
         if($result == TRUE){
@@ -17,10 +18,10 @@
     }
 
 
-    if (isset($GET['id'])) {
+    if (isset($_GET['id'])) {
         $post_id = $_GET['id'];
 
-        $sql = "SELECT * FROM 'posts' WHERE id='$post_id'";
+        $sql = "select * from posts where id='$post_id'";
 
         $result = $conn->query($sql);
 
@@ -43,13 +44,13 @@
         
         <h2>Post Update</h2>
         
-        <form action="" method="POST">
+        <form action="" method="post">
             <fieldset>
                 <label for="">Title</label>
                 <input type="text" name="title" value="<?php echo $title ?>"><br>
                 <label for="">Body</label>
                 <input type="text" name="body" value="<?php echo $body ?>"><br>
-                <input type="submit" name="submit" value="Update Post">
+                <input type="submit" name="update" value="Update Post">
             </fieldset>
         </form>
     </body>

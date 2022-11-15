@@ -3,9 +3,9 @@
 
     if (isset($_GET['id'])) {
         $post_id = $_GET['id'];
-       $sql = "DELETE FROM 'posts' WHERE post_id = '$post_id'";
+       $sql = "delete from posts WHERE `id` = '$post_id'";
        
-       $result = $db->query($sql);
+       $result = $conn->query($sql);
 
        if ($result == TRUE) {
         echo "Post deleted successfully!";

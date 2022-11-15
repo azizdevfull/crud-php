@@ -4,21 +4,20 @@
     if (isset($_POST['submit'])) {
         $title = $_POST['title'];
         $body = $_POST['body'];
+        
+        $sql = "insert into posts (title, body) values ('$title', '$body')";
+        // $query = "insert into users (user_id, user_name, password) values ('$user_id', '$user_name', '$password')";
+        $result = $conn->query($sql);
+        
+        if ($result == TRUE) {
+            echo "New Post Added Successfully";
+        }
+        else{
+            echo "Error: " . $sql . "<br />". $conn->error;
+        }
+        
+        $conn->close();
     }
-
-    $sql = "INSERT INTO 'posts' (title, body) VALUES ('$title', '$body')";
-
-    $result = $conn->query($sql);
-
-    if ($result == TRUE) {
-        echo "New Post Added Successfully";
-    }
-    else{
-        echo "Error: " . $sql . "<br />". $conn->error;
-    }
-
-    $conn->close();
-
     ?>
 
     <!DOCTYPE html>
@@ -32,7 +31,7 @@
     <body>
         <h2 align="center">Posts</h2>
 
-        <form action="">
+        <form action="" method="post">
             <fieldset>
                 <label for="">Title</label>
                 <input type="text" name="title"><br>
