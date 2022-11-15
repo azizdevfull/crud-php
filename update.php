@@ -57,7 +57,7 @@
     </html>
     <?php 
     }else{
-        header('Location: view.php');
+        header('location: view.php');
     }
 }
 ?>
